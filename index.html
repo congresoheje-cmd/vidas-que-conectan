@@ -677,13 +677,21 @@
         */
 
         const {
-          data: registro,
+          data: nuevoId,
           error
-        } = await supabaseClient
-          .from("inscripciones")
-          .insert([datos])
-          .select()
-          .single();
+        } = await supabaseClient.rpc(
+          "registrar_inscripcion",
+          {
+            p_nombres: datos.nombres,
+            p_cedula: datos.cedula,
+            p_correo: datos.correo,
+            p_contacto: datos.contacto,
+            p_institucion: datos.institucion,
+            p_titulo_academico: datos.titulo_academico,
+            p_servicio: datos.servicio,
+            p_acepta_datos: datos.acepta_datos
+          }
+        );
 
 
         /*
@@ -708,7 +716,7 @@
           ========================================================
         */
 
-        const id = registro.id;
+        const id = nuevoId;
 
         const codigo =
           "VC26-" +
