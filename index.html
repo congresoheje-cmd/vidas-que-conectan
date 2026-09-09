@@ -3,143 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Vidas que Conectan | Congreso 2026</title>
-
-  <meta name="description"
-        content="I Congreso Interdisciplinario Vidas que Conectan. Innovación, Ciencia y Estrategias para la Prevención del Suicidio y la Promoción de la Salud Mental.">
+  <title>Inscripción | I Congreso Interdisciplinario “Vidas que Conectan”</title>
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f1fbfd;
-      color: #183b46;
-      line-height: 1.6;
+      background: #f4f8f8;
+      color: #24454b;
     }
 
     .hero {
-      background:
-        linear-gradient(135deg, rgba(24, 101, 117, .96), rgba(87, 190, 207, .92));
-      color: white;
-      padding: 70px 20px 60px;
       text-align: center;
+      padding: 55px 20px 60px;
+      background: #dcefed;
     }
 
     .logo-area {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 25px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.18);
-      border: 2px solid rgba(255,255,255,.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-size: 42px;
+      margin-bottom: 10px;
     }
 
     .hero h1 {
-      max-width: 1000px;
-      margin: 0 auto 18px;
+      margin: 0;
       font-size: 34px;
-      line-height: 1.2;
-      font-weight: 700;
+      line-height: 1.25;
     }
 
     .hero h2 {
       max-width: 850px;
-      margin: 0 auto 28px;
-      font-size: 20px;
-      font-weight: 400;
+      margin: 18px auto;
+      font-size: 19px;
+      font-weight: normal;
       line-height: 1.5;
     }
 
     .event-info {
       display: flex;
       justify-content: center;
-      gap: 35px;
       flex-wrap: wrap;
-      margin: 25px auto;
-      font-size: 17px;
-    }
-
-    .event-info div {
-      background: rgba(255,255,255,.13);
-      padding: 12px 18px;
-      border-radius: 10px;
+      gap: 18px;
+      margin-top: 25px;
+      font-size: 16px;
     }
 
     .organizers {
-      margin-top: 25px;
+      margin-top: 20px;
       font-size: 15px;
-      opacity: .95;
     }
 
     .container {
-      max-width: 850px;
-      margin: -30px auto 60px;
-      padding: 0 20px;
-      position: relative;
+      width: min(900px, calc(100% - 30px));
+      margin: 35px auto;
     }
 
     .card {
       background: white;
-      border-radius: 18px;
-      padding: 40px;
-      box-shadow: 0 10px 35px rgba(22, 85, 98, .12);
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     }
 
     .card h2 {
-      color: #176577;
-      text-align: center;
-      margin-bottom: 8px;
-      font-size: 28px;
+      margin-top: 0;
+      font-size: 27px;
     }
 
     .intro {
-      text-align: center;
-      color: #657c83;
-      margin-bottom: 30px;
+      line-height: 1.6;
+      color: #5c7277;
     }
 
     .form-group {
       margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 7px;
-      color: #234a55;
-    }
-
-    .required {
-      color: #d85c68;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid #c9dce0;
-      border-radius: 9px;
-      font-size: 16px;
-      background: #fbfeff;
-      color: #183b46;
-      outline: none;
-      transition: .2s;
-    }
-
-    input:focus,
-    select:focus {
-      border-color: #51b9ca;
-      box-shadow: 0 0 0 3px rgba(81,185,202,.15);
     }
 
     .row {
@@ -148,54 +88,85 @@
       gap: 18px;
     }
 
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .required {
+      color: #b3261e;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #c8d6d8;
+      border-radius: 8px;
+      font-size: 16px;
+      background: white;
+      color: #24454b;
+    }
+
+    input:focus,
+    select:focus {
+      outline: 2px solid #8fc7c0;
+      border-color: #6caea6;
+    }
+
+    #otroServicioGroup,
+    #otroTituloGroup {
+      display: none;
+    }
+
     .checkbox-area {
       display: flex;
       align-items: flex-start;
       gap: 10px;
       margin: 25px 0;
-      font-size: 14px;
-      color: #536d74;
     }
 
     .checkbox-area input {
       width: auto;
-      margin-top: 5px;
+      margin-top: 4px;
+    }
+
+    .checkbox-area label {
+      margin: 0;
+      font-weight: normal;
+      line-height: 1.5;
     }
 
     .btn {
       width: 100%;
-      border: none;
-      padding: 16px;
-      border-radius: 10px;
-      background: #176577;
-      color: white;
-      font-size: 17px;
+      border: 0;
+      border-radius: 9px;
+      padding: 15px 20px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: .2s;
-    }
-
-    .btn:hover {
-      background: #114f5e;
+      background: #3d9d76;
+      color: white;
     }
 
     .btn:disabled {
-      background: #91afb5;
+      opacity: 0.65;
       cursor: not-allowed;
     }
 
     .message {
       display: none;
-      padding: 25px;
       margin-top: 25px;
-      border-radius: 12px;
+      padding: 25px;
+      border-radius: 10px;
       text-align: center;
     }
 
     .success {
-      background: #e7f8f0;
-      color: #17613f;
-      border: 1px solid #a9dfc5;
+      background: #e9f7ef;
+      color: #245b43;
+      border: 1px solid #b8dfc8;
     }
 
     .error {
@@ -226,11 +197,6 @@
       color: #6b8389;
       font-size: 14px;
       padding: 0 20px 35px;
-    }
-
-    #otroServicioGroup,
-    #otroTituloGroup {
-      display: none;
     }
 
     @media (max-width: 650px) {
@@ -266,10 +232,7 @@
 <body>
 
   <header class="hero">
-
-    <div class="logo-area">
-      ♡
-    </div>
+    <div class="logo-area">♡</div>
 
     <h1>
       I Congreso Interdisciplinario<br>
@@ -291,12 +254,9 @@
       &nbsp; · &nbsp;
       <strong>Universidad San Francisco de Quito</strong>
     </div>
-
   </header>
 
-
   <main class="container">
-
     <section class="card">
 
       <h2>Formulario de inscripción</h2>
@@ -305,7 +265,6 @@
         Completa tus datos para participar en el I Congreso Interdisciplinario
         “Vidas que Conectan”.
       </p>
-
 
       <form id="registrationForm">
 
@@ -322,7 +281,6 @@
             placeholder="Escribe tus nombres y apellidos">
         </div>
 
-
         <div class="row">
 
           <div class="form-group">
@@ -338,10 +296,9 @@
               placeholder="nombre@correo.com">
           </div>
 
-
           <div class="form-group">
             <label for="cedula">
-              Número de cédula <span class="required">*</span>
+              Cédula <span class="required">*</span>
             </label>
 
             <input
@@ -349,43 +306,38 @@
               id="cedula"
               required
               inputmode="numeric"
-              maxlength="20"
+              autocomplete="off"
               placeholder="Número de cédula">
           </div>
 
         </div>
 
-
         <div class="row">
 
           <div class="form-group">
             <label for="contacto">
-              Número de contacto <span class="required">*</span>
+              Teléfono / contacto
             </label>
 
             <input
-              type="tel"
+              type="text"
               id="contacto"
-              required
               autocomplete="tel"
-              placeholder="Ej. 09XXXXXXXX">
+              placeholder="Número de contacto">
           </div>
-
 
           <div class="form-group">
             <label for="institucion">
-              Institución a la que pertenece <span class="required">*</span>
+              Institución
             </label>
 
             <input
               type="text"
               id="institucion"
-              required
               placeholder="Nombre de la institución">
           </div>
 
         </div>
-
 
         <div class="form-group">
           <label for="titulo_academico">
@@ -407,9 +359,7 @@
           </select>
         </div>
 
-
         <div class="form-group" id="otroTituloGroup">
-
           <label for="otro_titulo">
             Especifica tu título académico
           </label>
@@ -418,20 +368,15 @@
             type="text"
             id="otro_titulo"
             placeholder="Escribe tu título académico">
-
         </div>
 
-
         <div class="form-group">
-
           <label for="servicio">
             Servicio / área <span class="required">*</span>
           </label>
 
           <select id="servicio" required>
-
             <option value="">Selecciona una opción</option>
-
             <option value="Psicología">Psicología</option>
             <option value="Psiquiatría">Psiquiatría</option>
             <option value="Medicina">Medicina</option>
@@ -444,14 +389,10 @@
             <option value="Investigación">Investigación</option>
             <option value="Salud Pública">Salud Pública</option>
             <option value="Otro">Otro</option>
-
           </select>
-
         </div>
 
-
         <div class="form-group" id="otroServicioGroup">
-
           <label for="otro_servicio">
             Especifica el servicio / área
           </label>
@@ -460,9 +401,7 @@
             type="text"
             id="otro_servicio"
             placeholder="Escribe el servicio o área">
-
         </div>
-
 
         <div class="checkbox-area">
 
@@ -479,21 +418,16 @@
 
         </div>
 
-
         <button
           type="submit"
           class="btn"
           id="submitButton">
-
           COMPLETAR INSCRIPCIÓN
-
         </button>
 
       </form>
 
-
       <div id="successMessage" class="message success">
-
         <h3>¡Registro exitoso! 🎉</h3>
 
         <p>
@@ -510,42 +444,56 @@
         <p>
           Guarda este código para el día del congreso.
         </p>
-
       </div>
-
 
       <div id="errorMessage" class="message error"></div>
 
     </section>
-
   </main>
 
-
   <footer class="footer">
-
     I Congreso Interdisciplinario “Vidas que Conectan” · 2026<br>
     Hospital Especializado Julio Endara · Universidad San Francisco de Quito
-
   </footer>
 
+
+  <!-- Cliente oficial de Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
 
     /*
+      ============================================================
       CONFIGURACIÓN DE SUPABASE
-
-      Project URL:
-      https://dmgzqoycsfvhsvjsbnws.supabase.co
+      ============================================================
     */
 
     const SUPABASE_URL =
       "https://dmgzqoycsfvhsvjsbnws.supabase.co";
 
+    /*
+      IMPORTANTE:
+      Reemplaza TU_PUBLISHABLE_KEY por tu Publishable Key actual
+      de Supabase.
+    */
     const SUPABASE_KEY =
       "sb_publishable_29FazKqvo2ouVcNDjbWvqw_iEfRcp4x";
 
 
-    const form = document.getElementById("registrationForm");
+    /*
+      Crear cliente oficial de Supabase
+    */
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+    /*
+      Elementos del formulario
+    */
+    const form =
+      document.getElementById("registrationForm");
 
     const submitButton =
       document.getElementById("submitButton");
@@ -556,13 +504,11 @@
     const errorMessage =
       document.getElementById("errorMessage");
 
-
     const servicio =
       document.getElementById("servicio");
 
     const otroServicioGroup =
       document.getElementById("otroServicioGroup");
-
 
     const titulo =
       document.getElementById("titulo_academico");
@@ -572,7 +518,9 @@
 
 
     /*
-      Mostrar / ocultar "Otro servicio"
+      ============================================================
+      MOSTRAR / OCULTAR "OTRO SERVICIO"
+      ============================================================
     */
 
     servicio.addEventListener("change", function () {
@@ -595,7 +543,9 @@
 
 
     /*
-      Mostrar / ocultar "Otro título"
+      ============================================================
+      MOSTRAR / OCULTAR "OTRO TÍTULO"
+      ============================================================
     */
 
     titulo.addEventListener("change", function () {
@@ -618,7 +568,9 @@
 
 
     /*
-      Enviar inscripción
+      ============================================================
+      ENVIAR INSCRIPCIÓN
+      ============================================================
     */
 
     form.addEventListener("submit", async function (event) {
@@ -634,140 +586,165 @@
 
       try {
 
+        /*
+          Obtener título académico
+        */
+
         let tituloAcademico = titulo.value;
-
-        let servicioFinal = servicio.value;
-
 
         if (tituloAcademico === "Otro") {
 
           tituloAcademico =
-            document.getElementById("otro_titulo").value.trim();
+            document
+              .getElementById("otro_titulo")
+              .value
+              .trim();
 
         }
 
+
+        /*
+          Obtener servicio
+        */
+
+        let servicioFinal = servicio.value;
 
         if (servicioFinal === "Otro") {
 
           servicioFinal =
-            document.getElementById("otro_servicio").value.trim();
+            document
+              .getElementById("otro_servicio")
+              .value
+              .trim();
 
         }
 
 
+        /*
+          Crear objeto con los datos
+        */
+
         const datos = {
 
           nombres:
-            document.getElementById("nombres").value.trim(),
+            document
+              .getElementById("nombres")
+              .value
+              .trim(),
 
           correo:
-            document.getElementById("correo").value.trim(),
+            document
+              .getElementById("correo")
+              .value
+              .trim(),
 
           cedula:
-            document.getElementById("cedula").value.trim(),
+            document
+              .getElementById("cedula")
+              .value
+              .trim(),
 
           contacto:
-            document.getElementById("contacto").value.trim(),
+            document
+              .getElementById("contacto")
+              .value
+              .trim(),
+
+          institucion:
+            document
+              .getElementById("institucion")
+              .value
+              .trim(),
 
           titulo_academico:
             tituloAcademico,
-
-          institucion:
-            document.getElementById("institucion").value.trim(),
 
           servicio:
             servicioFinal,
 
           acepta_datos:
-            document.getElementById("acepta_datos").checked
+            document
+              .getElementById("acepta_datos")
+              .checked
 
         };
 
 
         /*
-          Enviar información a Supabase
+          ========================================================
+          INSERTAR EN SUPABASE
+          ========================================================
         */
 
-        const respuesta = await fetch(
-          SUPABASE_URL + "/rest/v1/inscripciones",
-          {
-
-            method: "POST",
-
-            headers: {
-
-              "Content-Type": "application/json",
-
-              "apikey": SUPABASE_KEY,
-
-              "Authorization":
-                "Bearer " + SUPABASE_KEY,
-
-              "Prefer":
-                "return=representation"
-
-            },
-
-            body: JSON.stringify(datos)
-
-          }
-        );
+        const {
+          data: registro,
+          error
+        } = await supabaseClient
+          .from("inscripciones")
+          .insert([datos])
+          .select()
+          .single();
 
 
-        const resultado = await respuesta.json();
+        /*
+          Si Supabase devuelve error
+        */
 
+        if (error) {
 
-        if (!respuesta.ok) {
-
-          console.error(resultado);
-
-          throw new Error(
-            "No se pudo completar el registro."
+          console.error(
+            "ERROR SUPABASE:",
+            error
           );
+
+          throw error;
 
         }
 
 
         /*
-          Obtener el ID creado por Supabase
+          ========================================================
+          CREAR CÓDIGO DE INSCRIPCIÓN
+          ========================================================
         */
-
-        const registro = resultado[0];
 
         const id = registro.id;
-
-
-        /*
-          Crear código para el participante
-
-          Ejemplo:
-          VC26-0001
-          VC26-0002
-        */
 
         const codigo =
           "VC26-" +
           String(id).padStart(4, "0");
 
 
-        document.getElementById("registrationCode")
+        document
+          .getElementById("registrationCode")
           .textContent = codigo;
 
 
+        /*
+          Ocultar formulario
+        */
+
         form.style.display = "none";
+
+
+        /*
+          Mostrar mensaje de éxito
+        */
 
         successMessage.style.display = "block";
 
+
+        /*
+          Subir al inicio
+        */
 
         window.scrollTo({
           top: 0,
           behavior: "smooth"
         });
 
-      }
 
-
-      catch (error) {
+      } catch (error) {
 
         console.error(error);
 
@@ -789,4 +766,4 @@
   </script>
 
 </body>
-</html>
+</html>sua
