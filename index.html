@@ -276,6 +276,9 @@
     .nav-links a:hover,.nav-links a.active{background:#fff;color:#123f55}
     @media(max-width:650px){.nav-inner{min-height:54px;flex-direction:column;justify-content:center;gap:3px;padding:8px 0}.nav-brand{font-size:11px}.nav-links{width:100%;justify-content:center}.nav-links a{padding:7px 11px;font-size:12px}}
 </style>
+<style>
+.qr-area{margin:22px auto 12px;text-align:center}.qr-box{display:inline-flex;padding:14px;background:#fff;border-radius:14px;box-shadow:0 5px 18px rgba(0,0,0,.08)}#qrCode img{display:block}.card-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}.btn-small{display:inline-block;padding:11px 16px;border-radius:9px;background:#123f55;color:#fff;text-decoration:none;border:0;font-weight:700;cursor:pointer}.btn-small.alt{background:#3d9d76}.participant-card{width:min(560px,100%);margin:22px auto 0;padding:24px;border-radius:18px;background:linear-gradient(145deg,#fff,#eef6f5);border:1px solid #d8e7e7;box-shadow:0 8px 25px rgba(18,63,85,.10);text-align:left}.participant-card .pc-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border-bottom:1px solid #d9e5e6;padding-bottom:14px;margin-bottom:16px}.participant-card .pc-title{font-weight:800;color:#123f55;font-size:13px;letter-spacing:.08em}.participant-card .pc-name{font-size:24px;font-weight:800;color:#183f4b;margin:4px 0}.participant-card .pc-label{font-size:12px;color:#6b8389;text-transform:uppercase;letter-spacing:.06em}.participant-card .pc-code{font-size:19px;font-weight:800;color:#3d9d76;letter-spacing:1px}.participant-card .pc-body{display:grid;grid-template-columns:1fr 120px;gap:20px;align-items:center}.participant-card .pc-qr{background:#fff;padding:8px;border-radius:10px}.participant-card .pc-qr img{width:104px;height:104px;display:block}.participant-card .pc-foot{margin-top:16px;font-size:12px;color:#6b8389}.download-note{font-size:13px;color:#5c7277;margin-top:10px}@media(max-width:650px){.participant-card .pc-body{grid-template-columns:1fr}.participant-card .pc-qr{width:max-content;margin:auto}.participant-card .pc-name{font-size:21px}}
+</style>
 </head>
 
 <body>
@@ -499,8 +502,42 @@
         <div class="code" id="registrationCode"></div>
 
         <p>
-          Guarda este código para el día del congreso.
+          Guarda este código y tu código QR para el día del congreso.
         </p>
+
+        <div class="qr-area">
+          <div class="qr-box"><div id="qrCode"></div></div>
+          <div class="download-note">Presenta este QR al momento de ingresar.</div>
+        </div>
+
+        <div class="card-actions">
+          <button type="button" class="btn-small" id="downloadCardButton">DESCARGAR MI TARJETA</button>
+          <button type="button" class="btn-small alt" id="downloadQrButton">GUARDAR QR</button>
+        </div>
+
+        <div id="participantCard" class="participant-card">
+          <div class="pc-head">
+            <div>
+              <div class="pc-title">I CONGRESO INTERDISCIPLINARIO</div>
+              <div class="pc-name" id="cardName"></div>
+              <div class="pc-label">Participante</div>
+            </div>
+            <div style="text-align:right">
+              <div class="pc-label">Código</div>
+              <div class="pc-code" id="cardCode"></div>
+            </div>
+          </div>
+          <div class="pc-body">
+            <div>
+              <div class="pc-label">Institución</div>
+              <div id="cardInstitution" style="font-weight:700;margin:4px 0 14px"></div>
+              <div class="pc-label">Evento</div>
+              <div style="font-weight:700;margin-top:4px">“Vidas que Conectan”</div>
+              <div class="pc-foot">18–20 de noviembre · Hospital Especializado Julio Endara</div>
+            </div>
+            <div class="pc-qr"><img id="cardQrImage" alt="Código QR del participante"></div>
+          </div>
+        </div>
       </div>
 
       <div id="errorMessage" class="message error"></div>
@@ -516,6 +553,8 @@
 
   <!-- Cliente oficial de Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <script>
 
@@ -783,6 +822,50 @@
         document
           .getElementById("registrationCode")
           .textContent = codigo;
+
+        // Generar QR con el código de participante (sin datos personales)
+        const qrContainer = document.getElementById("qrCode");
+        qrContainer.innerHTML = "";
+        new QRCode(qrContainer, {
+          text: codigo,
+          width: 190,
+          height: 190,
+          correctLevel: QRCode.CorrectLevel.M
+        });
+
+        // Preparar la tarjeta digital del participante
+        document.getElementById("cardName").textContent = datos.nombres;
+        document.getElementById("cardCode").textContent = codigo;
+        document.getElementById("cardInstitution").textContent = datos.institucion || "No especificada";
+
+        setTimeout(() => {
+          const qrCanvas = qrContainer.querySelector("canvas");
+          const qrImg = qrContainer.querySelector("img");
+          const cardQr = document.getElementById("cardQrImage");
+          if (qrCanvas) cardQr.src = qrCanvas.toDataURL("image/png");
+          else if (qrImg) cardQr.src = qrImg.src;
+        }, 150);
+
+        document.getElementById("downloadQrButton").onclick = () => {
+          const canvas = qrContainer.querySelector("canvas");
+          if (!canvas) return;
+          const link = document.createElement("a");
+          link.download = codigo + "-QR.png";
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+        };
+
+        document.getElementById("downloadCardButton").onclick = async () => {
+          const card = document.getElementById("participantCard");
+          const canvas = await html2canvas(card, {
+            backgroundColor: "#eef6f5",
+            scale: 2
+          });
+          const link = document.createElement("a");
+          link.download = codigo + "-tarjeta.png";
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+        };
 
 
         /*
